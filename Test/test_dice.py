@@ -1,7 +1,6 @@
 import unittest
-import sys
 
-from DICE import dice
+from Dice import dice
 
 class TestDice(unittest.TestCase):
     
