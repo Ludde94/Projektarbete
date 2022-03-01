@@ -1,6 +1,6 @@
 import unittest
 
-from Dice import dice
+from game import dice
 
 class TestDice(unittest.TestCase):
     
