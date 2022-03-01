@@ -3,7 +3,7 @@ import random
 class RolledOneException(Exception):
     pass
 
-class Dice:
+class Dice():
     """creating dice with random"""
     def __init__(self):
         self.value = random.randint(1, 6)
