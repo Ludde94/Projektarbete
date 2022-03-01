@@ -7,10 +7,12 @@ def menu():
     """menu"""
     print("Here are your game menu: ".center(50))
     print("1. Create new player".center(50))
-    print("2. Change existing player name".center(50))
-    print("3. Show highscore".center(50))
-    print("4. Quit game".center(50))
-    input("choice:")
+    print("2. Start new game".center(50))
+    print("3. Change existing player name".center(50))
+    print("4. Show highscore".center(50))
+    print("5. Show rules of the game".center(50))
+    print("6.Quit game".center(50))
+    return input("choice:")
     
 def welcome():
     """Welcome message"""
