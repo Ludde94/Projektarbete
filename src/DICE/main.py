@@ -1,6 +1,10 @@
 import sys
 
 def main():
+    pass
+
+def ingenting():
+    pass
 
 
 
