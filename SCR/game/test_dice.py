@@ -1,6 +1,6 @@
 import unittest
 
-from game import dice
+import dice
 
 class TestDice(unittest.TestCase):
     
@@ -12,3 +12,6 @@ class TestDice(unittest.TestCase):
         res = die.faces
         exp = 1, 6
         self.assertEqual(res, exp)
+        
+if __name__ == '__main__':
+    unittest.main()
