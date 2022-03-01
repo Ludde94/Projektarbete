@@ -18,3 +18,4 @@ class Dice:
 
     def __str__(self):
         return "Rolled " + str(self.value) + "."
+
