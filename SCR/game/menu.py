@@ -16,8 +16,8 @@ class Menu:
         print("5. Show rules of the game".center(50))
         print("6.Quit game".center(50))
         print("*" * 50)
-        return input("Choice: ")
-
+        return int(input("Choice: "))
+    
     def welcome(self):
         """Welcome message"""
         print("*" * 50)
