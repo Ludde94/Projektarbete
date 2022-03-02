@@ -1,6 +1,11 @@
-class menu:
+class Menu:
     
-    def menu():
+    def __init__(self):
+        self.game_menu
+        self.welcome
+        self.rules
+    
+    def game_menu(self):
         """menu"""
         print("*" * 50)
         print("Here are your game menu: ".center(50))
@@ -13,13 +18,13 @@ class menu:
         print("*" * 50)
         return int(input("choice:"))
     
-    def welcome():
+    def welcome(self):
         """Welcome message"""
         print("*" * 50)
         print("Welcome to Pig Dice!" .center(50))
         print("*" * 50)
         
-    def rules():
+    def rules(self):
         """rules of the game"""
         print("*" * 100)
         print("* The The objective of the game is to be the first one to reach 100 points".center(30))
