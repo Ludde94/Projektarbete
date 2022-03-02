@@ -1,8 +1,5 @@
 import sys
 
-def main():
-    pass
-
 def menu():
     """menu"""
     print("*" * 50)
@@ -16,13 +13,12 @@ def menu():
     print("*" * 50)
     return input("choice:")
 
-    
 def welcome():
     """Welcome message"""
     print("*" * 50)
     print("Welcome to Pig Dice!" .center(50))
     print("*" * 50)
-    
+
 def rules():
     """rules of the game"""
     print("*" * 100)
@@ -33,20 +29,5 @@ def rules():
     print("* If a player chooses to hold, their turn total is added to their score, and it becomes the next player's turn".center(30))
     print("*" * 100)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 if __name__ == "__main__":
     # Call the main function.
-    main()
