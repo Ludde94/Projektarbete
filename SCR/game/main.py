@@ -1,5 +1,8 @@
 import sys
 
+def main():
+    pass
+
 def menu():
     """menu"""
     print("*" * 50)
@@ -31,3 +34,4 @@ def rules():
 
 if __name__ == "__main__":
     # Call the main function.
+    main()
