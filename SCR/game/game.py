@@ -1,4 +1,3 @@
-from game import dice
 
 class box:
     """box holder for value"""
