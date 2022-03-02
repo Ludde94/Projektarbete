@@ -6,6 +6,7 @@ class player():
     """"creating player with user input"""
     def player(self):
         input('Name of player: ')
+        return self
     
       
   
