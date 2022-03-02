@@ -1,7 +1,6 @@
 import sys
 
-def main():
-    pass
+from pip import main
 
 def menu():
     """menu"""
@@ -14,7 +13,7 @@ def menu():
     print("5. Show rules of the game".center(50))
     print("6.Quit game".center(50))
     print("*" * 50)
-    return input("choice:")
+    return input("Choice: ")
 
 def welcome():
     """Welcome message"""
@@ -31,6 +30,11 @@ def rules():
     print("* If the player rolls any other number, it is added to their turn total and the player's turn continues".center(30))
     print("* If a player chooses to hold, their turn total is added to their score, and it becomes the next player's turn".center(30))
     print("*" * 100)
+    
+def main():
+    welcome()
+    menu()
+    rules()
 
 if __name__ == "__main__":
     # Call the main function.
