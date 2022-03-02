@@ -3,7 +3,7 @@ import unittest
 import dice
 
 class TestDice(unittest.TestCase):
-    
+    """Test dice object"""
     def test_dice(self):
         
         die = dice.Dice()
@@ -11,7 +11,7 @@ class TestDice(unittest.TestCase):
         self.assertIsInstance(die, dice.Dice)
         
     def test_roll(self):
-        
+        """Test dice roll"""
         die1 = dice.Dice()
 
         res = die1.value
