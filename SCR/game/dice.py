@@ -10,9 +10,9 @@ class Dice():
 
     def roll(self):
         """creating roll with random value"""
-        self.value = random.randint(1, 6)
-        self.sum_rolls += self.value #funkar inte att addera här, hjälp
         self.sum_rolls_made += 1
+        self.value = random.randint(1, 6)
+        self.sum_rolls += self.value
         return self.value
     
     def get_value(self):#funkar inte att addera, får ingen output
@@ -22,6 +22,10 @@ class Dice():
     def get_rolls_made(self):
         """get how many rolls were made"""
         return self.sum_rolls_made
+    
+    def get_sum_rolls(self):
+        """Get sum of all rolls made."""
+        return self.sum_rolls
         
     def __str__(self):
         """Print rolled value"""
