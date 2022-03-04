@@ -15,7 +15,7 @@ class Dice():
         self.sum_rolls += self.value
         return self.value
     
-    def get_value(self):#funkar inte att addera, får ingen output
+    def get_value(self):
         """get value all rolls"""
         return self.sum_rolls
     
