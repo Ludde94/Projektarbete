@@ -8,5 +8,6 @@ class player():
         input('Name of player: ')
         return self
     
-      
-  
+    def keep_rolling(self):
+        decision= input("Press 1 - Roll again, 2 - Hold?", 1, 2)
+        return decision

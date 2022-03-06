@@ -1,11 +1,13 @@
 import sys
-import highScore
 import dice
 import menu
+import Computer
 
 def main():
-    new_list = highScore.HighScore()
-    new_list.highscores()
+   pass
+    
+    
+    
 
 if __name__ == "__main__":
     # Call the main function.
