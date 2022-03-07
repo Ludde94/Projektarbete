@@ -1,13 +1,12 @@
 import sys
 import dice
 import menu
-import Computer
+import computer
+import player
 
 def main():
-   pass
-    
-    
-    
+   Human_player = player.Player()
+   Human_player.keep_rolling
 
 if __name__ == "__main__":
     # Call the main function.

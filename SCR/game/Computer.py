@@ -28,5 +28,3 @@ class Computer:
         else:
             print("Computer will hold")
         return False
-    
-    
