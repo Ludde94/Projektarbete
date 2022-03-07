@@ -1,5 +1,5 @@
 Fredde
-100
+10
 Ludde
 0
 Computer
