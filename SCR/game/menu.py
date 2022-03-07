@@ -1,5 +1,5 @@
 class Menu:
-
+    """Menu class"""
     def __init__(self):
         self.game_menu
         self.welcome

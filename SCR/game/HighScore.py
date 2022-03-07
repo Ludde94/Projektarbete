@@ -1,6 +1,7 @@
 class HighScore:
 
     def __init__(self):
+        """object of class"""
         self.add_highscore
         self.highscores
 

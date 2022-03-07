@@ -1,5 +1,6 @@
 import random
 
+
 class Dice():
     
     def __init__(self):
@@ -14,18 +15,17 @@ class Dice():
         self.value = random.randint(1, 6)
         self.sum_rolls += self.value
         return self.value
-    
-    def get_value(self):
-        """get value all rolls"""
-        return self.sum_rolls
+       
     
     def get_rolls_made(self):
         """get how many rolls were made"""
         return self.sum_rolls_made
     
+    
     def get_sum_rolls(self):
         """Get sum of all rolls made."""
         return self.sum_rolls
+        
         
     def __str__(self):
         """Print rolled value"""

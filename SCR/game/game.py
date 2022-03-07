@@ -7,5 +7,5 @@ class box:
     def reset(self):
         self.value = 0
         
-    def add_dice_value(self, value):
-        self.value += value
+    def add_dice_value(self,sum_rolls_made):
+        self.value += sum_rolls_made
