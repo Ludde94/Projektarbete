@@ -1,5 +1,4 @@
-
-class box:
+class Box():
     """box holder for value"""
     def __init__(self):
         self.value = 0

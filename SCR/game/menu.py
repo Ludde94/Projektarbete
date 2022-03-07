@@ -1,4 +1,4 @@
-class Menu:
+class Menu():
     """Menu class"""
     def __init__(self):
         self.game_menu
