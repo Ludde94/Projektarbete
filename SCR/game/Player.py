@@ -6,9 +6,12 @@ class Player():
 
     """"creating player with user input"""
     def player(self):
+        names = []
         name = input('Name of player: ')
-        return name
-
+        names.append(name)
+        return name, names
+    
+    
     def keep_rolling(self):
         """Decision for keep rolling"""
         print("Press 1 - Roll again, 2 - Hold?")
