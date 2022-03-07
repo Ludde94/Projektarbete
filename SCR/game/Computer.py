@@ -28,3 +28,12 @@ class Computer:
         else:
             print("Computer will hold")
         return False
+<<<<<<< HEAD
+=======
+    
+    def comp_decision():
+       print("Which computer setting would you like to play against?")
+       comp_decision = int(input("1 - Easy, 2 - hard"))
+       return comp_decision
+        
+>>>>>>> bbef8faa42bf614f54f2b6989dfb7d03f8ed08fb
