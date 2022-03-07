@@ -1,6 +1,6 @@
 import dice
 
-class Computer: 
+class Computer(): 
     """Computer object"""
     create = dice.Dice
     turnvalue = create.get_sum_rolls

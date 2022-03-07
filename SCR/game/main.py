@@ -5,8 +5,8 @@ import computer
 import player
 
 def main():
-   Human_player = player.Player()
-   Human_player.player()
+   welcome_menu = menu.Menu()
+   welcome_menu.welcome()
 
 if __name__ == "__main__":
     # Call the main function.

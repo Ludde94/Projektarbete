@@ -1,4 +1,4 @@
-class HighScore:
+class HighScore():
 
     def __init__(self):
         """object of class"""
