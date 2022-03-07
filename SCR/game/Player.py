@@ -9,5 +9,7 @@ class player():
         return self
     
     def keep_rolling(self):
-        decision= input("Press 1 - Roll again, 2 - Hold?", 1, 2)
+        """Decision for keep rolling"""
+        print("Press 1 - Roll again, 2 - Hold?")
+        decision = int(input(" "))
         return decision
