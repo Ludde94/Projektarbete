@@ -1,11 +1,18 @@
+import dice
+import menu
+import Player
+import Computer
+import HighScore
 
-class box:
-    """box holder for value"""
-    def __init__(self):
-        self.value = 0
-        
-    def reset(self):
-        self.value = 0
-        
-    def add_dice_value(self,sum_rolls_made):
-        self.value += sum_rolls_made
+class game():
+    die = dice.Dice()
+    info = menu.Menu()
+    player = Player.player
+    comp = Computer.Computer
+    high = HighScore.HighScore
+    
+    info.welcome
+    info.game_menu
+    
+    
+    
