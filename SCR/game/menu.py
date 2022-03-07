@@ -11,7 +11,6 @@ class Menu():
         print("Welcome to Pig Dice!" .center(50))
         print("Press Enter to start game." .center(50))
         print("*" * 50)
-        start = input('-> ')
 
     def game_menu(self):
         """menu"""
