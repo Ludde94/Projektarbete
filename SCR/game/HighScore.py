@@ -5,7 +5,7 @@ class HighScore:
         self.highscores
 
     def highscores(self):
-        with open('C:/Users/fekbl/Desktop/ProgrammeringAllmänt/Projektarbete/SCR/game/Highscores.txt', 'r') as Highscores_file:
+        with open('Highscores.txt', 'r') as Highscores_file:
             name = Highscores_file.readline().rstrip('\n')
             while name != '':
                 count = int(Highscores_file.readline())
