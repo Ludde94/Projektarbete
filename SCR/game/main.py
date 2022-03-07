@@ -6,7 +6,7 @@ import player
 
 def main():
    Human_player = player.Player()
-   Human_player.keep_rolling
+   Human_player.player()
 
 if __name__ == "__main__":
     # Call the main function.

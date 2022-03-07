@@ -2,6 +2,7 @@ class Player():
     """"creating player object"""
     def __init__(self):
         self.player
+        self.keep_rolling
 
     """"creating player with user input"""
     def player(self):
