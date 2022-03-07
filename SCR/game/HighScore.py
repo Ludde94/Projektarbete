@@ -1,5 +1,4 @@
-import dice
-import player
+class HighScore():
 
 class Highscore():
     score = dice.Dice
