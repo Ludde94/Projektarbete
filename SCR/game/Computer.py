@@ -1,4 +1,5 @@
 import dice
+import random
 
 class Computer(): 
     
@@ -10,6 +11,26 @@ class Computer():
         """computer object"""
         self.computer_roll_easy
         self.computer_roll_hard
+        
+    def computer_hard(self, rollsmade): #test
+        auto = random.randint(1, 35)
+        while rollsmade < 4 and auto <= 25:
+            print("computer will roll")
+            return True
+        else:
+            print("computer will hold")
+            return False
+    
+    def computer_easy(self, rollsmade): #test
+        auto = random.randint(1, 35)
+        while rollsmade < 6 and auto <= 20:
+            print("computer will roll")
+            return True
+        else:
+            print("computer will hold")
+            return False
+        
+        
         
     def computer_roll_hard(self, turnvalue, rollsmade):  # beslut utifrån turnvalue
         """computer hard setting"""
