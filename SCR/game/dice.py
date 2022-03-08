@@ -1,4 +1,5 @@
-import random
+from random import randint,choice
+
 
 class Dice():
     
@@ -6,12 +7,12 @@ class Dice():
         """creating dice with random"""
         self.sum_rolls = 0
         self.sum_rolls_made = 0
-        self.value = random.randint(1, 6)
+        self.value = randint(1, 6)
 
     def roll(self):
         """creating roll with random value"""
         self.sum_rolls_made += 1
-        self.value = random.randint(1, 6)
+        self.value = randint(1, 6)
         self.sum_rolls += self.value
         return self.value
        
