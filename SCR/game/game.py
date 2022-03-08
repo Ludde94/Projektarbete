@@ -2,17 +2,12 @@ from dice import Dice
 from menu import Menu
 from player import Player
 from computer import Computer
-from highScore import Highscore
+from highscore import Highscore
 
-class game():
-    die = Dice()
-    info = Menu()
-    player = Player()
-    comp = Computer()
-    high = Highscore()
+class Game():
     
-    info.welcome
-    info.game_menu
+    def __init__(self):
+        pass
     
-    
-    
+    def select_difficulty(self):
+        pass

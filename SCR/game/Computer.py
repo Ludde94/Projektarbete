@@ -1,17 +1,34 @@
 from dice import Dice
-from random import randint
+from random import randint, choice
 
 class Computer(): 
     
-    create = Dice
-    turnvalue = create.get_sum_rolls
-    rollsmade = create.get_rolls_made
-    
     def __init__(self):
         """computer object"""
-        self.computer_roll_easy
-        self.computer_roll_hard
+        self.name = "Ultimate computer"
+        self.dice = Dice()
+        self.current_value = 0
+        self.current_rolls = 0
+        self.current_sum = 0
         
+        
+    def set_difficulty(self, difficulty):
+        self.difficulty = difficulty
+        
+    def roll(self):
+        self.current_value = self.dice.value
+        self.current_sum = self.dice.sum_rolls
+        self.current_rolls = self.dice.sum_rolls_made
+        
+    def play(self):
+        if self.difficulty == "Easy":
+            result = choice(self.dice.sides, weights = [10, 10, 10, 5, 5, 5])
+            return result
+        elif self.difficulty == "Hard":
+            result = choice(self.dice.sides, weights = [5, 5, 5, 10, 10, 10])
+            return result
+
+
     def computer_hard(self, rollsmade): #test
         auto = randint(1, 35)
         while rollsmade < 4 and auto <= 25:

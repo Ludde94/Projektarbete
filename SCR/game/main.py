@@ -1,6 +1,7 @@
 from menu import Menu
 from player import Player
 from sys import exit
+from computer import Computer
 #from dice import Dice
 
 def main():
@@ -28,15 +29,16 @@ def main():
             player.changename(name)
             print(f'\nWe have changed your name to: {player.name}')
             game_menu_choice = menu.game_menu()
-      elif game_menu_choice == "1"  
-         pass
-   
-      
-   
-      
-      
-   
-   
+      elif game_menu_choice == "1":
+         computer = Computer()
+         set_difficulty = input("Press 1 for easy or 2 for hard")
+         if set_difficulty == "1":
+            computer.set_difficulty("Easy")
+         elif set_difficulty == "2":
+            computer.set_difficulty("Hard")
+         else:
+            print('This was not an option!')
+         print(computer.play())
 
 if __name__ == "__main__":
     # Call the main function.
