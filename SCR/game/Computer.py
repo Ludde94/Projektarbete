@@ -1,9 +1,9 @@
-import dice
-import random
+from dice import Dice
+from random import randint
 
 class Computer(): 
     
-    create = dice.Dice
+    create = Dice
     turnvalue = create.get_sum_rolls
     rollsmade = create.get_rolls_made
     
@@ -13,7 +13,7 @@ class Computer():
         self.computer_roll_hard
         
     def computer_hard(self, rollsmade): #test
-        auto = random.randint(1, 35)
+        auto = randint(1, 35)
         while rollsmade < 4 and auto <= 25:
             print("computer will roll")
             return True
@@ -22,7 +22,7 @@ class Computer():
             return False
     
     def computer_easy(self, rollsmade): #test
-        auto = random.randint(1, 35)
+        auto = randint(1, 35)
         while rollsmade < 6 and auto <= 20:
             print("computer will roll")
             return True
@@ -54,4 +54,3 @@ class Computer():
        print("Which computer setting would you like to play against?")
        comp_decision = int(input("1 - Easy, 2 - hard"))
        return comp_decision
-        
