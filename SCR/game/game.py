@@ -1,8 +1,3 @@
-from dice import Dice
-from menu import Menu
-from player import Player
-from computer import Computer
-from highscore import Highscore
 
 class Game():
     

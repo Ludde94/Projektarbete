@@ -30,15 +30,15 @@ def main():
             print(f'\nWe have changed your name to: {player.name}')
             game_menu_choice = menu.game_menu()
       elif game_menu_choice == "1":
-         computer = Computer()
-         set_difficulty = input("Press 1 for easy or 2 for hard")
+         comp = Computer()
+         set_difficulty = input("Press 1 for easy or 2 for hard: ")
          if set_difficulty == "1":
-            computer.set_difficulty("Easy")
+            comp.set_difficulty("Easy")
          elif set_difficulty == "2":
-            computer.set_difficulty("Hard")
+            comp.set_difficulty("Hard")
          else:
             print('This was not an option!')
-         print(computer.play())
+         print(comp.play())
 
 if __name__ == "__main__":
     # Call the main function.

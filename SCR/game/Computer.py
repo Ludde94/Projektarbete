@@ -1,5 +1,5 @@
 from dice import Dice
-from random import randint, choice
+from random import randint, choices
 
 class Computer(): 
     
@@ -10,64 +10,54 @@ class Computer():
         self.current_value = 0
         self.current_rolls = 0
         self.current_sum = 0
+        self.box = 0
+        
         
         
     def set_difficulty(self, difficulty):
         self.difficulty = difficulty
         
-    def roll(self):
-        self.current_value = self.dice.value
-        self.current_sum = self.dice.sum_rolls
-        self.current_rolls = self.dice.sum_rolls_made
         
     def play(self):
-        if self.difficulty == "Easy":
-            result = choice(self.dice.sides, weights = [10, 10, 10, 5, 5, 5])
-            return result
-        elif self.difficulty == "Hard":
-            result = choice(self.dice.sides, weights = [5, 5, 5, 10, 10, 10])
-            return result
-
-
-    def computer_hard(self, rollsmade): #test
-        auto = randint(1, 35)
-        while rollsmade < 4 and auto <= 25:
-            print("computer will roll")
-            return True
-        else:
-            print("computer will hold")
-            return False
+        self.running = True
+        weights_easy = [10, 15, 20, 25, 30, 50]
+        weights_hard = [10, 15, 20, 25, 30, 50]
+        hold_hard = [3, 1]
+        hold_easy = [1, 3]
+        threshold_easy = 40
+        threshold_hard = 20
+        
     
-    def computer_easy(self, rollsmade): #test
-        auto = randint(1, 35)
-        while rollsmade < 6 and auto <= 20:
-            print("computer will roll")
-            return True
-        else:
-            print("computer will hold")
-            return False
+        while self.running:
+            if self.difficulty == "Easy":
+                result = choices(self.dice.sides, weights_easy)[0]#kontroll räkna ludde
+            elif self.difficulty == "Hard":
+                result = choices(self.dice.sides, weights_hard)[0]#kontroll räkna ludde
+            self.current_rolls += 1
+            if result == 1:
+                print("Opps i got a 1, your turn") 
+                print(f'Computer still has a score of {self.current_sum}')
+                self.box = 0
+                self.running = False
+            else: 
+                print(f'Bot rolled: {result}')
+                self.box += result
+                
+                if self.difficulty == "Easy":
+                    threshold = threshold_easy
+                elif self.difficulty == "Hard":
+                    threshold = threshold_hard    
+                
+                if self.current_sum >= threshold:
+                    if self.difficulty == "Easy": 
+                        hold = choices([True, False], weights = hold_easy)[0]
+                    elif self.difficulty == "Hard":
+                        hold = choices([True, False], weights = hold_hard)[0]
+                    if hold:
+                        print(f'Computer chooses to hold, with a value of {self.current_sum}')
+                        self.current_sum += self.box
+                        self.running = False
+            
+                
         
-        
-        
-    def computer_roll_hard(self, turnvalue, rollsmade):  # beslut utifrån turnvalue
-        """computer hard setting"""
-        while turnvalue < 20 and rollsmade < 4: 
-            print("Computer will roll")
-            return True
-        else:
-            print("Computer will hold")
-            return False
-        
-    def computer_roll_easy(self, turnvalue, rollsmade):
-        """computer easy setting"""
-        while turnvalue < 30 and rollsmade < 8:
-            print("Computer will roll")
-            return True
-        else:
-            print("Computer will hold")
-        return False
-    
-    def comp_decision():
-       print("Which computer setting would you like to play against?")
-       comp_decision = int(input("1 - Easy, 2 - hard"))
-       return comp_decision
+       
