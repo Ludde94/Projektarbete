@@ -1,16 +1,16 @@
 class Player():
     """"creating player object"""
-    def __init__(self):
-        self.player
-        self.keep_rolling
+    def __init__(self, name):
+        self.name = name
+        
 
     """"creating player with user input"""
     def player(self):
-        names = []
         name = input('Name of player: ')
-        names.append(name)
-        return name, names
+        return name
     
+    def changename(self, newname):
+        self.name = newname
     
     def keep_rolling(self):
         """Decision for keep rolling"""
