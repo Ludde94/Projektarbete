@@ -19,10 +19,10 @@ class Computer():
 
     def play(self):
         self.running = True
-        weights_easy = [10, 15, 20, 25, 30, 50]
-        weights_hard = [10, 15, 20, 25, 30, 50]
-        hold_hard = [3, 1]
-        hold_easy = [1, 3]
+        weights_easy = [170, 100, 100, 100, 100, 100]#25% för en etta
+        weights_hard = [110, 100, 100, 100, 100, 100]#18% för en etta
+        hold_hard = [3, 1] #en av tre slag = hold
+        hold_easy = [1, 3] #två av tre slag = hold
         threshold_easy = 40
         threshold_hard = 20
 
