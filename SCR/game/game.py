@@ -1,15 +1,15 @@
-import dice
-import menu
-import player
-import computer
-import highscore
+from dice import Dice
+from menu import Menu
+from player import Player
+from computer import Computer
+from highScore import Highscore
 
 class game():
-    die = dice.Dice()
-    info = menu.Menu()
-    player = player.Player()
-    comp = computer.Computer()
-    high = highscore.Highscore()
+    die = Dice()
+    info = Menu()
+    player = Player()
+    comp = Computer()
+    high = Highscore()
     
     info.welcome
     info.game_menu
