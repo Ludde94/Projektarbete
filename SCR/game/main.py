@@ -31,14 +31,21 @@ def main():
             game_menu_choice = menu.game_menu()
       elif game_menu_choice == "1":
          comp = Computer()
-         set_difficulty = input("Press 1 for easy or 2 for hard: ")
-         if set_difficulty == "1":
-            comp.set_difficulty("Easy")
-         elif set_difficulty == "2":
-            comp.set_difficulty("Hard")
-         else:
-            print('This was not an option!')
-         print(comp.play())
+         while True:
+            try:
+               
+               set_difficulty = int(input("Press 1 for easy or 2 for hard: "))
+               if set_difficulty == 1:
+                  comp.set_difficulty("Easy")
+                  break
+               elif set_difficulty == 2:
+                  comp.set_difficulty("Hard")
+                  break
+               else:
+                  print('This was not an valid option, please enter 1 or 2')
+            except ValueError:
+               print("This is not an number please enter 1 or 2")
+         comp.play()
 
 if __name__ == "__main__":
     # Call the main function.

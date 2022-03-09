@@ -1,5 +1,6 @@
 from dice import Dice
 from random import randint, choices
+from time import sleep
 
 class Computer():
 
@@ -7,7 +8,6 @@ class Computer():
         """computer object"""
         self.name = "Ultimate computer"
         self.dice = Dice()
-        self.current_value = 0
         self.current_rolls = 0
         self.current_sum = 0
         self.box = 0
@@ -23,17 +23,19 @@ class Computer():
         self.running = True
         weights_easy = [170, 100, 100, 100, 100, 100]#25% för en etta
         weights_hard = [110, 100, 100, 100, 100, 100]#18% för en etta
-        hold_hard = [3, 1] #en av tre slag = hold
+        hold_hard = [10, 1] #en av tre slag = hold
         hold_easy = [1, 3] #två av tre slag = hold
-        threshold_easy = 40
-        threshold_hard = 20
+        threshold_easy = 20
+        threshold_hard = 15
 
 
         while self.running:
             if self.difficulty == "Easy":
                 result = choices(self.dice.sides, weights_easy)[0]
+                sleep(1.5) 
             elif self.difficulty == "Hard":
                 result = choices(self.dice.sides, weights_hard)[0]
+                sleep(1.5)
             self.current_rolls += 1
             if result == 1:
                 print("Opps i got a 1, your turn")
@@ -49,12 +51,15 @@ class Computer():
                 elif self.difficulty == "Hard":
                     threshold = threshold_hard 
 
-                if self.current_sum >= threshold:
+                if self.box >= threshold:
                     if self.difficulty == "Easy":
                         hold = choices([True, False], weights = hold_easy)[0]
                     elif self.difficulty == "Hard":
                         hold = choices([True, False], weights = hold_hard)[0]
-                    if hold:
-                        print(f'Computer chooses to hold, with a value of {self.current_sum}')
+                    if hold == True:
                         self.current_sum += self.box
+                        print(f'Computer chooses to hold, with a value of {self.current_sum}')
                         self.running = False
+                    else:
+                        print("chooses to continue")
+        return "Computer done"

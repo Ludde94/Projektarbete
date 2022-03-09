@@ -1,5 +1,5 @@
 from random import randint,choice
-from computer import Computer
+
 
 
 class Dice():
