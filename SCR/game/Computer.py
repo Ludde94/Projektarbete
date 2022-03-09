@@ -4,13 +4,14 @@ from time import sleep
 
 class Computer():
 
-    def __init__(self):
+    def __init__(self, winning_number):
         """computer object"""
         self.name = "Ultimate computer"
         self.dice = Dice()
         self.current_rolls = 0
         self.current_sum = 0
         self.box = 0
+        self.winning_number = winning_number
 
 
     def set_difficulty(self, difficulty):
@@ -30,6 +31,9 @@ class Computer():
 
 
         while self.running:
+            if self.current_sum >= self.winning_number:
+                self.running = False
+                break
             if self.difficulty == "Easy":
                 result = choices(self.dice.sides, weights_easy)[0]
                 sleep(1.5) 
@@ -38,13 +42,15 @@ class Computer():
                 sleep(1.5)
             self.current_rolls += 1
             if result == 1:
+                self.box = 0
                 print("Opps i got a 1, your turn")
                 print(f'Computer still has a score of {self.current_sum}')
-                self.box = 0
                 self.running = False
             else:
                 print(f'Bot rolled: {result}')
                 self.box += result
+                if self.current_sum >= self.winning_number or (self.box + self.current_sum) >= self.winning_number:
+                    return "winner"
 
                 if self.difficulty == "Easy":
                     threshold = threshold_easy
@@ -58,8 +64,9 @@ class Computer():
                         hold = choices([True, False], weights = hold_hard)[0]
                     if hold == True:
                         self.current_sum += self.box
+                        self.box = 0
                         print(f'Computer chooses to hold, with a value of {self.current_sum}')
                         self.running = False
                     else:
                         print("chooses to continue")
-        return "Computer done"
+        return "player"

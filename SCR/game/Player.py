@@ -5,13 +5,14 @@ from random import randint
 
 class Player():
     """"creating player object"""
-    def __init__(self, name):
+    def __init__(self, name, winning_number):
         self.name = name
         self.dice = Dice()
         self.current_value = 0
         self.current_rolls = 0
         self.current_sum = 0
         self.box = 0
+        self.winning_number = winning_number
 
     def changename(self, newname):
         """changing player name"""
@@ -40,6 +41,8 @@ class Player():
 
                     self.box += result
                     print(f"You rolled: {result}, and your turnscore: {self.box}")
+                    if self.current_sum >= self.winning_number or (self.box + self.current_sum) >= self.winning_number:
+                        return "winner"
                 else:
                     self.box = 0
                     print(f"Opps i got a {result}, passing turn")
@@ -48,6 +51,7 @@ class Player():
 
             else:
                 self.current_sum += self.box
+                self.box = 0
                 print(f"wise choice {self.name} your total score is {self.current_sum}")
                 self.running = False
-        return "Player done"
+        return "computer"
