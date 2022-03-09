@@ -1,7 +1,7 @@
 import json
 
-class Highscore:
-    
+class High_score:
+    """Highscore class"""
     def __init__(self):
         self.filename = "high_score.json"
     
@@ -13,17 +13,17 @@ class Highscore:
         return data
     
     
-    def update_highscore(self, data, entry):
+    def update_high_score(self, data, entry):
         """update highscore"""
         data.append(entry)
         return data
     
-    def save_highscore(self, filename, data):
+    def save_high_score(self, filename, data):
         with open(filename, "w") as file:
             json.dump(data, file)
     
     
-    def show_highscore(self, data):
+    def show_high_score(self, data):
 
         data.sort(key=lambda d: d["rolls"])
         top_5 = data[:5]
