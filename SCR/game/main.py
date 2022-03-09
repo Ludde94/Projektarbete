@@ -64,14 +64,14 @@ def main():
                   turn = _
                elif _ == "winner":
                   winner_winner_chicken_dinner(player, "player")
-               else:
-                  break
+                  exit()
             elif turn == "computer":
                _ = comp.play()
                if _ == "player":
                   turn = _
                elif _ == "winner":
                   winner_winner_chicken_dinner(comp, "computer")
+                  exit()
 
 
 if __name__ == "__main__":
