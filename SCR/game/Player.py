@@ -12,6 +12,7 @@ class Player():
         self.box = 0
 
     def changename(self, newname):
+        """changing player name"""
         self.name = newname
 
     def input_number(self, prompt='Please enter a number: ', minimum=0, maximum=None):

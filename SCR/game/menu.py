@@ -14,6 +14,7 @@ class Menu():
             return True
         
     def set_name(self):
+        """Set name on player"""
         #print("*" * 50)
         while True:
             name = input("Enter your name: ").strip()

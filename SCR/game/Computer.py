@@ -14,10 +14,12 @@ class Computer():
 
 
     def set_difficulty(self, difficulty):
+        """set difficulty on computer"""
         self.difficulty = difficulty
 
 
     def play(self):
+        """computer play function"""
         self.running = True
         weights_easy = [170, 100, 100, 100, 100, 100]#25% för en etta
         weights_hard = [110, 100, 100, 100, 100, 100]#18% för en etta
@@ -29,9 +31,9 @@ class Computer():
 
         while self.running:
             if self.difficulty == "Easy":
-                result = choices(self.dice.sides, weights_easy)[0]#kontroll räkna ludde
+                result = choices(self.dice.sides, weights_easy)[0]
             elif self.difficulty == "Hard":
-                result = choices(self.dice.sides, weights_hard)[0]#kontroll räkna ludde
+                result = choices(self.dice.sides, weights_hard)[0]
             self.current_rolls += 1
             if result == 1:
                 print("Opps i got a 1, your turn")
