@@ -2,19 +2,30 @@ from sys import exit
 from menu import Menu
 from player import Player
 from computer import Computer
-#from dice import Dice
+from highscore import Highscore
 
-def winner_winner_chicken_dinner(winner, who):
+
+def winner_winner_chicken_dinner(winner, who, highscore):
    """define who is the winner of the game"""
    if who == "player":
          print(f"Congratulations, you won {winner.name}")
+         entry = {"name": winner.name, "rolls": winner.current_rolls}
+         filename = highscore.filename
+         data = highscore.read_file(filename)
+         data = highscore.update_highscore(data, entry)
+         highscore.save_highscore(filename, data)
+         return data
+         
+         
+         
    elif who == "computer":
          print(f"You losed against the {winner.name}.")
-
+         
 
 def main():
    """main function"""
    winning_number = 10
+   highscore = Highscore()
    menu = Menu()
    choice = menu.welcome()
    if choice:
@@ -28,7 +39,9 @@ def main():
          if menu.rules():
             game_menu_choice = menu.game_menu()
       elif game_menu_choice == "3":
-         pass
+         highscore.show_highscore(data)
+         input("Press enter to return to menu")
+         game_menu_choice = menu.game_menu()
       elif game_menu_choice == "2":
          print("Select a new name\n\nTo keep your name press enter without any text.\n")
          name = input("Enter your new name: ").strip()
@@ -61,8 +74,8 @@ def main():
                return_value = player.play()
                if return_value == "computer":
                   turn = return_value
-               elif turn == "winner":
-                  winner_winner_chicken_dinner(player, "player")
+               elif return_value == "winner":
+                  data = winner_winner_chicken_dinner(player, "player", highscore)
                   print("Would you like to return to menu or quit?")
                   user_input= input("press 1 for menu, press anything else for quit the game: ")
                   if user_input == "1":
@@ -75,10 +88,12 @@ def main():
                if return_value == "player":
                   turn = return_value
                elif return_value == "winner":
-                  winner_winner_chicken_dinner(comp, "computer")
+                  winner_winner_chicken_dinner(comp, "computer", highscore)
                   print("Would you like to return to menu or quit?")
                   user_input= input("press 1 for menu, press anything else for quit the game: ")
                   if user_input == "1":
+                     player = Player(player_name, winning_number)
+                     comp = Computer(winning_number)
                      game_menu_choice = menu.game_menu()
                      break
                   else:

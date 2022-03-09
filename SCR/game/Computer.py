@@ -5,7 +5,7 @@ from dice import Dice
 
 
 
-class Computer():
+class Computer:
     """class of computer player"""
 
     def __init__(self, winning_number):

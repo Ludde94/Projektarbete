@@ -2,7 +2,7 @@ from random import randint
 from dice import Dice
 
 
-class Player():
+class Player:
     """"creating player object"""
     def __init__(self, name, winning_number):
         self.name = name
@@ -35,12 +35,19 @@ class Player():
         while self.running:
             human_decision = self.input_number("  1 - Roll, 0 - Hold? ")
             if human_decision == 1:
+                self.current_rolls += 1
                 result = randint(1, 6)
                 if result != 1:
-
                     self.box += result
                     print(f"You rolled: {result}, and your turnscore: {self.box}")
-                    if self.current_sum >= self.winning_number or (self.box + self.current_sum) >= self.winning_number:
+                    if self.current_sum >= self.winning_number:
+                        self.box = 0
+                        return "winner"
+                    elif self.box + self.current_sum >= self.winning_number:
+                        self.box = 0
+                        return "winner"
+                    elif self.box >= self.winning_number:
+                        self.box = 0
                         return "winner"
                 else:
                     self.box = 0
