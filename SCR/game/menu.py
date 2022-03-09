@@ -10,7 +10,7 @@ class Menu():
         print("Press Enter to start game." .center(50))
         print("*" * 50)
         while True:
-            user = input(">> ")
+            input(">> ")
             return True
         
     def set_name(self):
@@ -44,13 +44,14 @@ class Menu():
     def rules(self):
         """rules of the game"""
         print("*" * 100)
-        print("* The The objective of the game is to be the first one to reach 100 points".center(30))
+        print("* The objective of the game is to be the first one to reach 100 points".center(30))
         print("* Each turn, a player will roll a die".center(30))
         print("* until either a 1 is rolled or the player decides to hold".center(30))
-        print("* If the player rolls any other number, it is added to their turn total and the player's turn continues".center(30))
-        print("* If a player chooses to hold, their turn total is added to their score, and it becomes the next player's turn".center(30))
+        print("* If the player rolls any other number,".center(30))
+        print("it is added to their turn total and the player's turn continues".center(30))
+        print("* If a player chooses to hold, their turn total is added to their score".center(30))
+        print("* and it becomes the next player's turn".center(30))
         print("*" * 100)
         while True:
             input("Press enter to return to menu")
-            return True
-        
+            return True 

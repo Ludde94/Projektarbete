@@ -1,18 +1,19 @@
+from sys import exit
 from menu import Menu
 from player import Player
-from sys import exit
 from computer import Computer
 #from dice import Dice
 
 def winner_winner_chicken_dinner(winner, who):
-
-      if who == "player":
+   """define who is the winner of the game"""
+   if who == "player":
          print(f"Congratulations, you won {winner.name}")
-      elif who == "computer":
+   elif who == "computer":
          print(f"You losed against the {winner.name}.")
 
 
 def main():
+   """main function"""
    winning_number = 10
    menu = Menu()
    choice = menu.welcome()
@@ -43,7 +44,6 @@ def main():
          turn = "player"
          while True:
             try:
-               
                set_difficulty = int(input("Press 1 for easy or 2 for hard: "))
                if set_difficulty == 1:
                   comp.set_difficulty("Easy")
@@ -56,22 +56,33 @@ def main():
             except ValueError:
                print("This is not an number please enter 1 or 2")
 
-         
          while True:
             if turn == "player":
-               _ = player.play()
-               if _ == "computer":
-                  turn = _
-               elif _ == "winner":
+               return_value = player.play()
+               if return_value == "computer":
+                  turn = return_value
+               elif turn == "winner":
                   winner_winner_chicken_dinner(player, "player")
-                  exit()
+                  print("Would you like to return to menu or quit?")
+                  user_input= input("press 1 for menu, press anything else for quit the game: ")
+                  if user_input == "1":
+                     game_menu_choice = menu.game_menu()
+                     break
+                  else:
+                     exit()
             elif turn == "computer":
-               _ = comp.play()
-               if _ == "player":
-                  turn = _
-               elif _ == "winner":
+               return_value= comp.play()
+               if return_value == "player":
+                  turn = return_value
+               elif return_value == "winner":
                   winner_winner_chicken_dinner(comp, "computer")
-                  exit()
+                  print("Would you like to return to menu or quit?")
+                  user_input= input("press 1 for menu, press anything else for quit the game: ")
+                  if user_input == "1":
+                     game_menu_choice = menu.game_menu()
+                     break
+                  else:
+                     exit()
 
 
 if __name__ == "__main__":

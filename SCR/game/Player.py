@@ -1,6 +1,5 @@
-
-from dice import Dice
 from random import randint
+from dice import Dice
 
 
 class Player():
@@ -55,3 +54,4 @@ class Player():
                 print(f"wise choice {self.name} your total score is {self.current_sum}")
                 self.running = False
         return "computer"
+    
