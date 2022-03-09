@@ -2,7 +2,6 @@ from sys import exit
 from menu import Menu
 from player import Player
 from computer import Computer
-#from dice import Dice
 
 def winner_winner_chicken_dinner(winner, who):
    """define who is the winner of the game"""

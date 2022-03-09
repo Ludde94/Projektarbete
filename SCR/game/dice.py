@@ -11,12 +11,6 @@ class Dice():
         self.value = 0
         self.sides = [1, 2, 3, 4, 5, 6]
 
-    #def roll(self):
-        #"""creating roll with random value"""
-        #self.sum_rolls_made += 1
-        #self.value = randint(1, 6)
-        #self.sum_rolls += self.value
-
 
     def get_rolls_made(self):
         """get how many rolls were made"""
