@@ -21,7 +21,7 @@ def winner_winner_chicken_dinner(winner, who, high_score):
 
 
 def main():
-    """Main function"""
+    """Main function to start the game."""
     winning_number = 100
 
     high_score = HighScore()
@@ -34,31 +34,25 @@ def main():
 
     while True:
         if game_menu_choice == "5":
-            """Quit the game."""
             sys.exit()
 
         elif game_menu_choice == "4":
-            """Show the game rules for the player."""
             game_menu_choice = show_game_rules(menu)
 
         elif game_menu_choice == "3":
-            """Show current leaderboard. if leaderboard is empty, let them know."""
             data = high_score.read_file(high_score.filename)
             game_menu_choice = show_game_leaderboard(data, high_score, menu)
 
         elif game_menu_choice == "2":
-            """Let player change their name or keep their current one."""
             game_menu_choice = change_player_name(menu, player)
 
         elif game_menu_choice == "1":
             comp = Computer(winning_number)
             turn = "player"
 
-            """Player has to choose between Easy / Hard difficulty on computer."""
             set_game_difficulty(comp)
             print(("~" * 15), "THE GAME HAS BEGUN", ("~" * 15))
 
-            """Start game and switch turns until a player or computer has won."""
             data, game_menu_choice, player, comp = game_play(comp, high_score, menu, player,
                                                              player_name, turn, winning_number)
 
@@ -155,5 +149,4 @@ def show_game_rules(menu):
 
 
 if __name__ == "__main__":
-    """Call the main function."""
     main()
