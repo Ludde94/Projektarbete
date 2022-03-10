@@ -1,6 +1,7 @@
 """module docstring"""
 import json
 
+
 class HighScore:
     """Highscore class"""
     def __init__(self):
