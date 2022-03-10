@@ -1,10 +1,12 @@
 import unittest
-from computer import Computer
+import computer
 
 class TestPlayer(unittest.TestCase):
-    """Test Menu object"""
-    def test_något(self):
-        pass
+    def setUp(self):
+        self.running = computer.Computer()
+
+    def test_play(self):
+        self.assertTrue(self.running)
         
         
     if __name__ == '__main__':
