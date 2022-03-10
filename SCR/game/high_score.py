@@ -1,15 +1,14 @@
 """module docstring"""
 import json
 
-
-class High_score:
+class HighScore:
     """Highscore class"""
     def __init__(self):
         self.filename = "high_score.json"
 
     def read_file(self, filename):
         """read file"""
-        with open(filename, "r") as file:
+        with open(filename, "r", encoding="utf8") as file:
             data = json.load(file)
         return data
 
@@ -20,7 +19,7 @@ class High_score:
 
     def save_high_score(self, filename, data):
         """save the updated data list to the json file"""
-        with open(filename, "w") as file:
+        with open(filename, "w", encoding="utf8") as file:
             json.dump(data, file)
 
     def show_high_score(self, data):

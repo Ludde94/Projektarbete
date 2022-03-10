@@ -1,3 +1,4 @@
+"""module docstring"""
 class Menu():
     """Menu class"""
     def __init__(self):
@@ -12,7 +13,7 @@ class Menu():
         while True:
             input(">> ")
             return True
-        
+
     def set_name(self):
         """Set name on player"""
         while True:
@@ -22,7 +23,7 @@ class Menu():
             else:
                 print(f'Welcome to the game {name}')
                 return name
-                
+
 
     def game_menu(self):
         """menu"""
@@ -53,4 +54,4 @@ class Menu():
         print("*" * 100)
         while True:
             input("Press enter to return to menu")
-            return True 
+            return True

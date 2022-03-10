@@ -1,5 +1,4 @@
-
-
+"""module docstring"""
 class Dice:
     """class of the die"""
     def __init__(self):

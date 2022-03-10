@@ -1,8 +1,9 @@
-from sys import exit
+"""module docstring"""
+import sys
 from menu import Menu
 from player import Player
 from computer import Computer
-from high_score import High_score
+from high_score import HighScore
 
 
 def winner_winner_chicken_dinner(winner, who, high_score):
@@ -15,16 +16,15 @@ def winner_winner_chicken_dinner(winner, who, high_score):
         data = high_score.update_high_score(data, entry)
         high_score.save_high_score(filename, data)
         return data
-
     elif who == "computer":
         print(f"\nYou lost against [the {winner.name}].\n")
 
 
 def main():
     """main function"""
-    winning_number = 100
+    winning_number = 10
 
-    high_score = High_score()
+    high_score = HighScore()
     menu = Menu()
 
     menu.welcome()
@@ -35,7 +35,7 @@ def main():
     while True:
         if game_menu_choice == "5":
             # Quit the game
-            exit()
+            sys.exit()
 
         elif game_menu_choice == "4":
             # Show the game rules for the player
@@ -51,10 +51,10 @@ def main():
             game_menu_choice = change_player_name(menu, player)
 
         elif game_menu_choice == "1":
-            comp = Computer(winning_number)  # create instance of Computer class
-            turn = "player"  # set default starting player to "player" or "computer"
+            comp = Computer(winning_number)
+            turn = "player"
 
-            # player has to choose between Easy or Hard difficulty on the computer
+            # player has to choose between Easy / Hard difficulty on computer
             set_game_difficulty(comp)
             print(("~" * 15), "THE GAME HAS BEGUN", ("~" * 15))
 
@@ -64,6 +64,7 @@ def main():
 
 
 def game_play(comp, high_score, menu, player, player_name, turn, winning_number):
+    """game play function"""
     while True:
         if turn == "player":
             return_value = player.play()
@@ -76,7 +77,7 @@ def game_play(comp, high_score, menu, player, player_name, turn, winning_number)
                     game_menu_choice = menu.game_menu()
                     break
                 else:
-                    exit()
+                    sys.exit()
         elif turn == "computer":
             return_value = comp.play()
             if return_value == "player":
@@ -91,11 +92,12 @@ def game_play(comp, high_score, menu, player, player_name, turn, winning_number)
                     game_menu_choice = menu.game_menu()
                     break
                 else:
-                    exit()
+                    sys.exit()
     return data, game_menu_choice, player, comp
 
 
 def set_game_difficulty(comp):
+    """Set the difficulty"""
     while True:
         try:
             set_difficulty = int(input("Press 1 for easy or 2 for hard: "))
@@ -114,6 +116,7 @@ def set_game_difficulty(comp):
 
 
 def change_player_name(menu, player):
+    """"Change player name"""
     print("Select a new name\n\nTo keep your name press enter without any text.\n")
     name = input("Enter your new name: ").strip()
     if name == "":
@@ -128,6 +131,7 @@ def change_player_name(menu, player):
 
 
 def show_game_leaderboard(data, high_score, menu):
+    """Show the game leaderboard"""
     if data == []:
         print("High-score is currently empty")
         input("Press enter to continue")
@@ -140,6 +144,7 @@ def show_game_leaderboard(data, high_score, menu):
 
 
 def show_game_rules(menu):
+    """Show the game rules"""
     if menu.rules():
         game_menu_choice = menu.game_menu()
     return game_menu_choice

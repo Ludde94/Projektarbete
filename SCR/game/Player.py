@@ -1,3 +1,4 @@
+"""module docstring"""
 from random import randint
 from dice import Dice
 
@@ -22,7 +23,7 @@ class Player:
         while True:
             try:
                 number = int(input(prompt))
-                if number in [1, 0]: 
+                if number in [1, 0]:
                     return number
             except ValueError:
                 print('You need to enter a number')
@@ -30,8 +31,8 @@ class Player:
 
     def play(self):
         """Decision for keep rolling"""
-        self.running = True
-        while self.running:
+        running = True
+        while running:
             human_decision = self.input_number("1 - Roll, 0 - Hold?: ")
             if human_decision == 1:
                 self.current_rolls += 1
@@ -52,10 +53,10 @@ class Player:
                     self.box = 0
                     print(f"\n[{self.name}] got a {result}, passing turn...")
                     print(f'[{self.name}] still has a score of {self.current_sum}\n')
-                    self.running = False
+                    running = False
             else:
                 self.current_sum += self.box
                 self.box = 0
                 print(f"wise choice [{self.name}] your total score is {self.current_sum}\n")
-                self.running = False
+                running = False
         return "computer"
