@@ -15,21 +15,22 @@ def winner_winner_chicken_dinner(winner, who, high_score):
         data = high_score.update_high_score(data, entry)
         high_score.save_high_score(filename, data)
         return data
+
     elif who == "computer":
-        print(f"You losed against the {winner.name}.")
+        print(f"\nYou lost against [the {winner.name}].\n")
 
 
 def main():
     """main function"""
-    winning_number = 100  # how many points to win the game
-    high_score = High_score()  # instance of the High_score class
-    menu = Menu()  # instance of the Menu class
-    choice = menu.welcome()  # returned value after showing the welcome screen
-    if choice:
-        # set a variable to their input of chosen name from welcome
-        player_name = menu.set_name()
-    player = Player(player_name, winning_number)  # create player
-    game_menu_choice = menu.game_menu()  # show menu and capture a choice
+    winning_number = 100
+
+    high_score = High_score()
+    menu = Menu()
+
+    menu.welcome()
+    player_name = menu.set_name()
+    player = Player(player_name, winning_number)
+    game_menu_choice = menu.game_menu()
 
     while True:
         if game_menu_choice == "5":
@@ -38,43 +39,39 @@ def main():
 
         elif game_menu_choice == "4":
             # Show the game rules for the player
-            game_menu_choice = show_game_rules(game_menu_choice, menu)
+            game_menu_choice = show_game_rules(menu)
 
         elif game_menu_choice == "3":
             # Show current leaderboard. if leaderboard is empty, let them know
-            game_menu_choice = show_game_leaderboard(
-                data, game_menu_choice, high_score, menu)
+            data = high_score.read_file(high_score.filename)
+            game_menu_choice = show_game_leaderboard(data, high_score, menu)
 
         elif game_menu_choice == "2":
             # Let player change their name or keep their current one
-            game_menu_choice = change_player_name(
-                game_menu_choice, menu, player)
+            game_menu_choice = change_player_name(menu, player)
 
         elif game_menu_choice == "1":
-            # create instance of Computer class
-            comp = Computer(winning_number)
+            comp = Computer(winning_number)  # create instance of Computer class
             turn = "player"  # set default starting player to "player" or "computer"
 
             # player has to choose between Easy or Hard difficulty on the computer
             set_game_difficulty(comp)
+            print(("~" * 15), "THE GAME HAS BEGUN", ("~" * 15))
 
             # Start game and switch turns until a player or computer has won
-            data, game_menu_choice, player = game_play(comp, game_menu_choice, high_score, menu,
-                                                       player, player_name, turn, winning_number)
+            data, game_menu_choice, player, comp = game_play(comp, high_score, menu, player,
+                                                             player_name, turn, winning_number)
 
 
-def game_play(comp, game_menu_choice, high_score, menu, player, player_name, turn, winning_number):
+def game_play(comp, high_score, menu, player, player_name, turn, winning_number):
     while True:
         if turn == "player":
             return_value = player.play()
             if return_value == "computer":
                 turn = return_value
             elif return_value == "winner":
-                data = winner_winner_chicken_dinner(
-                    player, "player", high_score)
-                print("Would you like to return to menu or quit?")
-                user_input = input(
-                    "press 1 for menu, press anything else for quit the game: ")
+                data = winner_winner_chicken_dinner(player, "player", high_score)
+                user_input = input("Press 1 for menu, press anything else for quit the game: ")
                 if user_input == "1":
                     game_menu_choice = menu.game_menu()
                     break
@@ -85,10 +82,9 @@ def game_play(comp, game_menu_choice, high_score, menu, player, player_name, tur
             if return_value == "player":
                 turn = return_value
             elif return_value == "winner":
+                data = []
                 winner_winner_chicken_dinner(comp, "computer", high_score)
-                print("Would you like to return to menu or quit?")
-                user_input = input(
-                    "press 1 for menu, press anything else for quit the game: ")
+                user_input = input("Press 1 for menu, press anything else for quit the game: ")
                 if user_input == "1":
                     player = Player(player_name, winning_number)
                     comp = Computer(winning_number)
@@ -96,7 +92,7 @@ def game_play(comp, game_menu_choice, high_score, menu, player, player_name, tur
                     break
                 else:
                     exit()
-    return data, game_menu_choice, player
+    return data, game_menu_choice, player, comp
 
 
 def set_game_difficulty(comp):
@@ -105,17 +101,19 @@ def set_game_difficulty(comp):
             set_difficulty = int(input("Press 1 for easy or 2 for hard: "))
             if set_difficulty == 1:
                 comp.set_difficulty("Easy")
+                print()
                 break
             elif set_difficulty == 2:
                 comp.set_difficulty("Hard")
+                print()
                 break
             else:
-                print('This was not an valid option, please enter 1 or 2')
+                print('This was not an valid option, please enter 1 or 2\n')
         except ValueError:
-            print("This is not an number please enter 1 or 2")
+            print("This is not an number please enter 1 or 2\n")
 
 
-def change_player_name(game_menu_choice, menu, player):
+def change_player_name(menu, player):
     print("Select a new name\n\nTo keep your name press enter without any text.\n")
     name = input("Enter your new name: ").strip()
     if name == "":
@@ -124,24 +122,24 @@ def change_player_name(game_menu_choice, menu, player):
     else:
         player.changename(name)
         print(f'\nWe have changed your name to: {player.name}')
+        input("Press enter to continue...")
         game_menu_choice = menu.game_menu()
     return game_menu_choice
 
 
-def show_game_leaderboard(data, game_menu_choice, high_score, menu):
-    data_ = high_score.read_file(high_score.filename)
-    if data_ != []:
-        high_score.show_high_score(data)
-        input("Press enter to return to menu")
-        game_menu_choice = menu.game_menu()
-    else:
+def show_game_leaderboard(data, high_score, menu):
+    if data == []:
         print("High-score is currently empty")
         input("Press enter to continue")
         game_menu_choice = menu.game_menu()
+    else:
+        high_score.show_high_score(data)
+        input("Press enter to return to menu")
+        game_menu_choice = menu.game_menu()
     return game_menu_choice
 
 
-def show_game_rules(game_menu_choice, menu):
+def show_game_rules(menu):
     if menu.rules():
         game_menu_choice = menu.game_menu()
     return game_menu_choice

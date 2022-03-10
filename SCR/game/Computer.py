@@ -3,13 +3,12 @@ from random import choices
 from dice import Dice
 
 
-
-
 class Computer:
     """class of computer player"""
 
     def __init__(self, winning_number):
         """computer object"""
+        self.difficulty = None
         self.name = "Ultimate computer"
         self.dice = Dice()
         self.current_rolls = 0
@@ -32,9 +31,6 @@ class Computer:
         threshold_hard = 15
 
         while self.running:
-            if self.current_sum >= self.winning_number:
-                self.running = False
-                break
             if self.difficulty == "Easy":
                 result = choices(self.dice.sides, weights_easy)[0]
                 sleep(1.5)
@@ -44,13 +40,20 @@ class Computer:
             self.current_rolls += 1
             if result == 1:
                 self.box = 0
-                print("Opps i got a 1, your turn")
-                print(f'Computer still has a score of {self.current_sum}')
+                print("\n[Computer] got a 1, passing turn...")
+                print(f'[Computer] still has a score of {self.current_sum}\n')
                 self.running = False
             else:
-                print(f'Bot rolled: {result}')
                 self.box += result
-                if self.current_sum >= self.winning_number or (self.box + self.current_sum) >= self.winning_number:
+                print(f"[Computer] rolled: {result}, and it's turnscore is: {self.box}")
+                if self.current_sum >= self.winning_number:
+                    self.box = 0
+                    return "winner"
+                elif self.box + self.current_sum >= self.winning_number:
+                    self.box = 0
+                    return "winner"
+                elif self.box >= self.winning_number:
+                    self.box = 0
                     return "winner"
 
                 if self.difficulty == "Easy":
@@ -58,7 +61,7 @@ class Computer:
                 elif self.difficulty == "Hard":
                     threshold = threshold_hard
 
-                if self.box >= threshold:
+                if self.box >= threshold or (self.box + self.current_sum) >= threshold:
                     if self.difficulty == "Easy":
                         hold = choices([True, False], weights=hold_easy)[0]
                     elif self.difficulty == "Hard":
@@ -67,8 +70,6 @@ class Computer:
                         self.current_sum += self.box
                         self.box = 0
                         print(
-                            f'Computer chooses to hold, with a value of {self.current_sum}')
-                        self.running = False
-                    else:
-                        print("chooses to continue")
+                            f'\n[Computer] chooses to hold, with a value of {self.current_sum}')
+                        break
         return "player"

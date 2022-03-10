@@ -19,7 +19,6 @@ class Player:
 
     def input_number(self, prompt='Please enter a number: '):
         """Read a positive number with the given prompt."""
-
         while True:
             try:
                 number = int(input(prompt))
@@ -33,13 +32,13 @@ class Player:
         """Decision for keep rolling"""
         self.running = True
         while self.running:
-            human_decision = self.input_number("  1 - Roll, 0 - Hold? ")
+            human_decision = self.input_number("1 - Roll, 0 - Hold?: ")
             if human_decision == 1:
                 self.current_rolls += 1
                 result = randint(1, 6)
                 if result != 1:
                     self.box += result
-                    print(f"You rolled: {result}, and your turnscore: {self.box}")
+                    print(f"[{self.name}] rolled: {result}, and your turnscore: {self.box}")
                     if self.current_sum >= self.winning_number:
                         self.box = 0
                         return "winner"
@@ -51,14 +50,12 @@ class Player:
                         return "winner"
                 else:
                     self.box = 0
-                    print(f"Opps i got a {result}, passing turn")
-                    print(f'{self.name} still has a score of {self.current_sum}')
+                    print(f"\n[{self.name}] got a {result}, passing turn...")
+                    print(f'[{self.name}] still has a score of {self.current_sum}\n')
                     self.running = False
-
             else:
                 self.current_sum += self.box
                 self.box = 0
-                print(f"wise choice {self.name} your total score is {self.current_sum}")
+                print(f"wise choice [{self.name}] your total score is {self.current_sum}\n")
                 self.running = False
         return "computer"
-    

@@ -9,16 +9,13 @@ class Dice:
         self.value = 0
         self.sides = [1, 2, 3, 4, 5, 6]
 
-   
     def get_rolls_made(self):
         """get how many rolls were made"""
         return self.sum_rolls_made
 
-
     def get_sum_rolls(self):
         """Get sum of all rolls made."""
         return self.sum_rolls
-
 
     def __str__(self):
         """Print rolled value"""
