@@ -109,6 +109,10 @@ def set_game_difficulty(comp):
                 comp.set_difficulty("Hard")
                 print()
                 break
+            elif set_difficulty == 9:
+                comp.set_difficulty("Cheat")
+                print()
+                break
             else:
                 print('This was not an valid option, please enter 1 or 2\n')
         except ValueError:

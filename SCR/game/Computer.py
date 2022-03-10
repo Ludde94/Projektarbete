@@ -26,13 +26,14 @@ class Computer:
         running = True
         weights_easy = [170, 100, 100, 100, 100, 100]  # 25% för en etta
         weights_hard = [110, 100, 100, 100, 100, 100]  # 18% för en etta
+        weights_cheat = [1, 0 ,0 ,0 ,0 ,0] #100% etta
         hold_hard = [5, 1]
         hold_easy = [1, 3]
         threshold_easy = 20
         threshold_hard = 15
 
         while running:
-            result = self.roll_dice(weights_easy, weights_hard)
+            result = self.roll_dice(weights_easy, weights_hard, weights_cheat)
             self.current_rolls += 1  # count total rolls
 
             if result == 1:
@@ -81,7 +82,7 @@ class Computer:
         running = False
         return running
 
-    def roll_dice(self, weights_easy, weights_hard):
+    def roll_dice(self, weights_easy, weights_hard, weights_cheat):
         """roll dice function"""
         if self.difficulty == "Easy":
             result = choices(self.dice.sides, weights_easy)[0]
@@ -89,4 +90,6 @@ class Computer:
         elif self.difficulty == "Hard":
             result = choices(self.dice.sides, weights_hard)[0]
             sleep(1.5)
+        elif self.difficulty == "Cheat":
+            result = choices(self.dice.sides, weights_cheat)[0]
         return result
