@@ -1,0 +1,18 @@
+# Code analysis
+bandit
+cohesion
+flake8
+flake8-docstrings
+flake8-polyfill
+pylint
+radon
+
+# Code style
+black
+
+# Documentation
+pdoc3
+sphinx
+
+# Unit test and coverage
+coverage
