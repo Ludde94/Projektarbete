@@ -22,7 +22,7 @@ def winner_winner_chicken_dinner(winner, who, high_score):
 
 def main():
     """main function"""
-    winning_number = 10
+    winning_number = 100
 
     high_score = HighScore()
     menu = Menu()
