@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import patch
 import io
-from player import Player
+from Player import Player
 
 class TestPlayer(unittest.TestCase):
     """Test player object"""
