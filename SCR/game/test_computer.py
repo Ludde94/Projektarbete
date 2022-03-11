@@ -2,6 +2,7 @@
 import unittest
 from computer import Computer
 
+
 class TestComputer(unittest.TestCase):
     """Test computer"""
     def test_is_instance(self):
@@ -107,6 +108,7 @@ class TestComputer(unittest.TestCase):
         comp = Computer(100)
         result = comp.computer_got_1()
         self.assertEqual(result, False)
+
 
 if __name__ == '__main__':
     unittest.main()
