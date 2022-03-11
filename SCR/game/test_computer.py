@@ -1,8 +1,9 @@
+"""module docstring"""
 import unittest
-from Computer import Computer
+from computer import Computer
 
 class TestComputer(unittest.TestCase):
-    
+    """Test computer"""
     def test_is_instance(self):
         """
         Testing if comp is the instance of Computer class
@@ -12,9 +13,9 @@ class TestComputer(unittest.TestCase):
 
     def test_set_difficulty(self):
         """
-        First testing if the default difficulty is None 
-        and then we update the difficulty and then test 
-        if the difficulty was updated and is no longer 
+        First testing if the default difficulty is None
+        and then we update the difficulty and then test
+        if the difficulty was updated and is no longer
         set to None
         """
         comp = Computer(100)
@@ -23,7 +24,7 @@ class TestComputer(unittest.TestCase):
         self.assertNotEqual(comp.difficulty, None)
 
     def test_set_difficulty_2(self):
-        """ 
+        """
         Testing if the difficulty is updated,
         when is set to "Easy"
         """
@@ -44,7 +45,7 @@ class TestComputer(unittest.TestCase):
         """
         Testing if the difficulty is updated,
         when is set to "Hard"
-        """        
+        """
         comp = Computer(100)
         comp.set_difficulty("Hard")
         self.assertEqual(comp.difficulty, "Hard")
@@ -100,7 +101,7 @@ class TestComputer(unittest.TestCase):
 
     def test_computer_got_1(self):
         """
-        Testing if the computer_got_1 returns 
+        Testing if the computer_got_1 returns
         None when dice value is 1
         """
         comp = Computer(100)
@@ -109,7 +110,3 @@ class TestComputer(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-    
-        
-        
-    

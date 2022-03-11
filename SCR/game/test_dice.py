@@ -1,12 +1,14 @@
+"""module docstring"""
 import unittest
 
 from dice import Dice
 
+
 class TestDice(unittest.TestCase):
-    
+    """Test dice module"""
     def test_is_instance(self):
         """
-        Testing if the dice is the instance of 
+        Testing if the dice is the instance of
         the Dice class
         """
         dice = Dice()
@@ -33,8 +35,8 @@ class TestDice(unittest.TestCase):
 
     def test_get_rolls_made_3(self):
         """
-        Testing if the method does not return 
-        the default value which is 0 when it 
+        Testing if the method does not return
+        the default value which is 0 when it
         has beeen updated
         """
         dice = Dice()
@@ -43,7 +45,7 @@ class TestDice(unittest.TestCase):
         self.assertNotEqual(rolls, 0)
 
     def test_get_sum_rolls(self):
-        """ 
+        """
         Testing the method returns the default
         value for sum which is 0
         """
@@ -53,7 +55,7 @@ class TestDice(unittest.TestCase):
 
     def test_get_sum_rolls_2(self):
         """
-        Testing if the method properly returns 
+        Testing if the method properly returns
         the updated value of the sum
         """
         dice = Dice()
@@ -64,7 +66,7 @@ class TestDice(unittest.TestCase):
     def test_get_sum_rolls_3(self):
         """
         Testing if the method does not return
-        the default value when it has been 
+        the default value when it has been
         updated
         """
         dice = Dice()
@@ -75,23 +77,23 @@ class TestDice(unittest.TestCase):
     def test_str(self):
         """
         Testing if our __str__ method properly
-        logs to the console with the default 
+        logs to the console with the default
         values
         """
         dice = Dice()
-        TEXT = "Rolled " + str(dice.value) + "."
-        self.assertEqual(str(dice), TEXT)
+        text = "Rolled " + str(dice.value) + "."
+        self.assertEqual(str(dice), text)
 
     def test_str_2(self):
         """
         Testing if our __str__ method properly
-        logs to the console with the updated 
+        logs to the console with the updated
         values
         """
         dice = Dice()
         dice.value = 5
-        TEXT = "Rolled " + str(dice.value) + "."
-        self.assertEqual(str(dice), TEXT)
+        text = "Rolled " + str(dice.value) + "."
+        self.assertEqual(str(dice), text)
 
     def test_str_3(self):
         """
@@ -99,9 +101,10 @@ class TestDice(unittest.TestCase):
         log the previous values
         """
         dice = Dice()
-        TEXT = "Rolled " + str(dice.value) + "."
+        text = "Rolled " + str(dice.value) + "."
         dice.value = 5
-        self.assertNotEqual(str(dice), TEXT)
+        self.assertNotEqual(str(dice), text)
+
 
 if __name__ == '__main__':
     unittest.main()

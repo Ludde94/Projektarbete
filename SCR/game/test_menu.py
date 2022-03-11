@@ -1,15 +1,16 @@
+"""module docstring"""
 import unittest
 from unittest.mock import patch
 import io
 
 from menu import Menu
 
+
 class TestPlayer(unittest.TestCase):
     """Test Menu object"""
     def test_IsInstance(self):
         menu = Menu()
         self.assertIsInstance(menu, Menu)
-
 
     # @patch('sys.stdout', new_callable=io.StringIO)
     # def test_welcome(self, mock_stdout):
@@ -39,7 +40,7 @@ class TestPlayer(unittest.TestCase):
     #     menu = Menu()
     #     menu.set_name()
     #     self.assertEqual(mock_stdout.getvalue(), "Wrong! Please enter a valid name.\n")
-        
+
 
     # @patch('sys.stdout', new_callable=io.StringIO)
     # def test_rules(self, mock_stdout):
@@ -56,7 +57,7 @@ class TestPlayer(unittest.TestCase):
     #     * and it becomes the next player's turn
     #     """.center(50)
     #     Text += "\n"
-    #     Text += "*" * 100 
+    #     Text += "*" * 100
     #     Text += "\n"
     #     Text += "\n"
 
@@ -64,6 +65,6 @@ class TestPlayer(unittest.TestCase):
     #     menu.rules()
     #     self.assertEqual(mock_stdout.getvalue(), Text)
 
-         
+
 if __name__ == '__main__':
     unittest.main()

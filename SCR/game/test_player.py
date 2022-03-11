@@ -1,7 +1,9 @@
+"""module docstring"""
 import unittest
 from unittest.mock import patch
 import io
-from Player import Player
+from player import Player
+
 
 class TestPlayer(unittest.TestCase):
     """Test player object"""
@@ -12,30 +14,30 @@ class TestPlayer(unittest.TestCase):
         self.assertIsInstance(player, Player)
 
     def test_changename(self):
-        """ 
-        Testing if the changename method properly 
-        updates the name of the player 
+        """
+        Testing if the changename method properly
+        updates the name of the player
         """
         player = Player("John Doe", 100)
-        CHANGED_NAME = "New Name"
-        
-        player.changename(CHANGED_NAME)
-        self.assertEqual(player.name, CHANGED_NAME)
+        changed_name = "New Name"
+
+        player.changename(changed_name)
+        self.assertEqual(player.name, changed_name)
 
     def test_changename_2(self):
-        """ 
-        Testing if the changename method properly 
+        """
+        Testing if the changename method properly
         updates the name of the player, by comparing
-        the previous value of the name 
-        """ 
-        NAME = "John Doe"
-        CHANGED_NAME = "New Name"
+        the previous value of the name
+        """
+        name = "John Doe"
+        changed_name = "New Name"
 
-        player = Player(NAME, 100)
+        player = Player(name, 100)
 
-        player.changename(CHANGED_NAME)
+        player.changename(changed_name)
 
-        self.assertNotEqual(player.name, NAME)
+        self.assertNotEqual(player.name, name)
 
     @patch('Player.Player.input_number', return_value=1)
     def test_input_number(self, input):
@@ -45,7 +47,7 @@ class TestPlayer(unittest.TestCase):
         """
         player = Player("John Doe", 100)
         self.assertEqual(player.input_number(), 1)
-    
+
     @patch('Player.Player.input_number', return_value=0)
     def test_input_number_2(self, input):
         """
@@ -67,9 +69,9 @@ class TestPlayer(unittest.TestCase):
     @patch('Player.Player.input_number', return_value=0)
     def test_play(self, input):
         """
-        Testing if the user inputs '0', then it completes 
-        the play method and returns "computer" indicating it 
-        has completed the method meanwhile writing 
+        Testing if the user inputs '0', then it completes
+        the play method and returns "computer" indicating it
+        has completed the method meanwhile writing
         "wise choice [John Doe] your total score is 0"
         to the console
         """
@@ -79,8 +81,8 @@ class TestPlayer(unittest.TestCase):
     @patch('Player.Player.input_number', return_value=1)
     def test_play_2(self, input):
         """
-        Testing if the user inputs '1', then it completes 
-        the play method and returns "computer" indicating it 
+        Testing if the user inputs '1', then it completes
+        the play method and returns "computer" indicating it
         has completed the method meanwhile writing to the console
         results based on the random outputs from the dice
         e.g. [John Doe] rolled: 5, and your turnscore: 35
@@ -92,7 +94,7 @@ class TestPlayer(unittest.TestCase):
     def test_play_3(self, input):
         """
         Testing if the user wins by returning "winner"
-        when the maximum score limit is reached, which 
+        when the maximum score limit is reached, which
         is in this case 1 (for the sake of this testcase)
         """
         player = Player("John Doe", 1)
@@ -102,8 +104,8 @@ class TestPlayer(unittest.TestCase):
     @patch('Player.Player.input_number', return_value=0)
     def test_play_4(self, expected_output, mock_stdout):
         """
-        Testing if the correct output is printed to the 
-        console when the user enters 0 which should print 
+        Testing if the correct output is printed to the
+        console when the user enters 0 which should print
         "wise choice [John Doe] your total score is 0\n\n"
         to the console.
         """
@@ -112,7 +114,7 @@ class TestPlayer(unittest.TestCase):
         self.assertEqual(mock_stdout.getvalue(), "wise choice [John Doe] your total score is 0\n\n")
 
         self.assertNotEqual(mock_stdout.getvalue(), "Any other random text")
-        
+
+
 if __name__ == '__main__':
     unittest.main()
-    
