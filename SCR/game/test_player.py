@@ -39,7 +39,7 @@ class TestPlayer(unittest.TestCase):
 
         self.assertNotEqual(player.name, name)
 
-    @patch('Player.Player.input_number', return_value=1)
+    @patch('player.Player.input_number', return_value=1)
     def test_input_number(self, input):
         """
         Testing if the input_number method properly returns
@@ -48,7 +48,7 @@ class TestPlayer(unittest.TestCase):
         player = Player("John Doe", 100)
         self.assertEqual(player.input_number(), 1)
 
-    @patch('Player.Player.input_number', return_value=0)
+    @patch('player.Player.input_number', return_value=0)
     def test_input_number_2(self, input):
         """
         Testing if the input_number method properly returns
@@ -57,7 +57,7 @@ class TestPlayer(unittest.TestCase):
         player = Player("John Doe", 100)
         self.assertEqual(player.input_number(), 0)
 
-    @patch('Player.Player.input_number', return_value="random text")
+    @patch('player.Player.input_number', return_value="random text")
     def test_input_number_3(self, input):
         """
         Testing if the input_number method does not returns
@@ -66,7 +66,7 @@ class TestPlayer(unittest.TestCase):
         player = Player("John Doe", 100)
         self.assertNotEqual(player.input_number(), 0)
 
-    @patch('Player.Player.input_number', return_value=0)
+    @patch('player.Player.input_number', return_value=0)
     def test_play(self, input):
         """
         Testing if the user inputs '0', then it completes
@@ -78,7 +78,7 @@ class TestPlayer(unittest.TestCase):
         player = Player("John Doe", 100)
         self.assertEqual(player.play(), "computer")
 
-    @patch('Player.Player.input_number', return_value=1)
+    @patch('player.Player.input_number', return_value=1)
     def test_play_2(self, input):
         """
         Testing if the user inputs '1', then it completes
@@ -90,7 +90,7 @@ class TestPlayer(unittest.TestCase):
         player = Player("John Doe", 100)
         self.assertEqual(player.play(), "computer")
 
-    @patch('Player.Player.input_number', return_value=1)
+    @patch('player.Player.input_number', return_value=1)
     def test_play_3(self, input):
         """
         Testing if the user wins by returning "winner"
@@ -101,7 +101,7 @@ class TestPlayer(unittest.TestCase):
         self.assertEqual(player.play(), "winner")
 
     @patch('sys.stdout', new_callable=io.StringIO)
-    @patch('Player.Player.input_number', return_value=0)
+    @patch('player.Player.input_number', return_value=0)
     def test_play_4(self, expected_output, mock_stdout):
         """
         Testing if the correct output is printed to the
