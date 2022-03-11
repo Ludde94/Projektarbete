@@ -27,7 +27,7 @@ class TestPlayer(unittest.TestCase):
         Testing if the changename method properly 
         updates the name of the player, by comparing
         the previous value of the name 
-        """
+        """ 
         NAME = "John Doe"
         CHANGED_NAME = "New Name"
 
