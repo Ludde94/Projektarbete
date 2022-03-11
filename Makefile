@@ -8,7 +8,7 @@ MESSAGE = printf "\033[32;01m---> $(1)\033[0m\n"
 
 # To make targets in each directory under the src/
 define FOREACH
-    for DIR in src/*; do \
+    for DIR in SCR/*; do \
         $(MAKE) -C $$DIR $(1); \
     done
 endef
